@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>লেসন ৫: অভ্যাসগত কর্ম (Habitual Fact)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;600;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-bg: #1a0b2e; 
+            --accent-gold: #ffd700; 
+            --accent-blue: #00d4ff; 
+            --text-white: #f1f5f9;
+            --text-gray: #cbd5e1;
+            --card-glass: rgba(255, 255, 255, 0.05);
+            --border-light: rgba(255, 255, 255, 0.1);
+            --purple-glow: #a29bfe;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+
+        body {
+            background-color: var(--primary-bg);
+            color: var(--text-white);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(100, 50, 240, 0.2) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 212, 255, 0.15) 0%, transparent 20%);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.8;
+        }
+
+        /* হোম বাটন */
+        .home-btn {
+            position: fixed;
+            top: 20px; left: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: var(--accent-gold);
+            font-weight: bold;
+            border: 1px solid var(--accent-gold);
+            transition: 0.3s;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .home-btn:hover { background: var(--accent-gold); color: #1a0b2e; }
+
+        /* কন্টেন্ট কন্টেইনার */
+        .content-container {
+            max-width: 900px;
+            margin: 60px auto 40px auto;
+            background: var(--card-glass);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 2.2rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border-light);
+            padding-bottom: 15px;
+        }
+
+        h2 {
+            color: var(--accent-blue);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        p { margin-bottom: 15px; font-size: 1.1rem; color: var(--text-gray); text-align: justify; }
+
+        /* সিগন্যাল ওয়ার্ডস (ট্যাগ ক্লাউড) */
+        .signal-words-box {
+            background: rgba(0,0,0,0.2);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px dashed var(--purple-glow);
+            margin: 20px 0;
+            text-align: center;
+        }
+        .word-badge {
+            display: inline-block;
+            background: rgba(162, 155, 254, 0.2);
+            color: var(--purple-glow);
+            padding: 5px 15px;
+            margin: 5px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            border: 1px solid rgba(162, 155, 254, 0.3);
+            transition: 0.3s;
+        }
+        .word-badge:hover {
+            background: var(--purple-glow);
+            color: #1a0b2e;
+            transform: scale(1.1);
+        }
+
+        /* উদাহরণ লিস্ট */
+        .example-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+        .example-item {
+            background: rgba(255,255,255,0.03);
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-gold);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .icon-circle {
+            width: 40px; height: 40px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-gold);
+            flex-shrink: 0;
+        }
+
+        /* সতর্কতা বক্স */
+        .alert-box {
+            background: rgba(255, 71, 87, 0.1);
+            border-left: 4px solid #ff4757;
+            padding: 15px;
+            margin-top: 20px;
+            font-size: 0.95rem;
+            color: #ffccc7;
+        }
+
+        /* নেভিগেশন */
+        .bottom-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-light);
+        }
+        .nav-link { text-decoration: none; color: var(--text-white); font-weight: bold; transition: 0.3s; }
+        .nav-link:hover { color: var(--accent-gold); }
+
+        /* রেসপন্সিভ */
+        @media (max-width: 600px) {
+            .content-container { padding: 20px; }
+            h1 { font-size: 1.6rem; }
+            .example-item { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="home-btn">
+        <i class="fas fa-home"></i> Home
+    </a>
+
+    <div class="content-container">
+        <h1>৫. অভ্যাসগত কর্ম (Habitual Fact)</h1>
+        <p class="subtitle" style="color: var(--accent-blue); font-weight: bold;">যে কাজগুলো আমরা নিয়মিত করি</p>
+
+        <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800" alt="Daily Routine" style="width:100%; border-radius:10px; margin: 20px 0; height: 200px; object-fit: cover; opacity: 0.8;">
+
+        <p>
+            <strong>Present Indefinite Tense</strong> এর অন্যতম প্রধান ব্যবহার হলো দৈনন্দিন জীবনের অভ্যাস বা রুটিন বোঝানো। আপনি প্রতিদিন, প্রতি সপ্তাহে, বা প্রায়ই যে কাজগুলো করেন, সেগুলো সবসময় এই টেন্সে লিখতে হবে।
+        </p>
+
+        <h2>চেনার উপায় (Signal Words)</h2>
+        <p>নিচের শব্দগুলো (Adverbs of Frequency) বাক্যে থাকলে সাধারণত সেটি Habitual Fact হয় এবং Present Indefinite Tense ব্যবহৃত হয়:</p>
+
+        <div class="signal-words-box">
+            <span class="word-badge">Always</span>
+            <span class="word-badge">Every day</span>
+            <span class="word-badge">Regularly</span>
+            <span class="word-badge">Often</span>
+            <span class="word-badge">Usually</span>
+            <span class="word-badge">Sometimes</span>
+            <span class="word-badge">Generally</span>
+            <span class="word-badge">Daily</span>
+            <span class="word-badge">Never</span>
+        </div>
+
+        <h2>উদাহরণ (Examples)</h2>
+        <ul class="example-list">
+            <li class="example-item">
+                <div class="icon-circle"><i class="fas fa-coffee"></i></div>
+                <div>
+                    <strong>I drink coffee <span style="color:var(--accent-gold);">every morning</span>.</strong>
+                    <br><small>আমি প্রতিদিন সকালে কফি খাই। (রুটিন)</small>
+                </div>
+            </li>
+            <li class="example-item">
+                <div class="icon-circle"><i class="fas fa-book-open"></i></div>
+                <div>
+                    <strong>My mother <span style="color:var(--accent-gold);">always</span> reads the Quran.</strong>
+                    <br><small>আমার মা সবসময় কুরআন পড়েন। (অভ্যাস)</small>
+                </div>
+            </li>
+            <li class="example-item">
+                <div class="icon-circle"><i class="fas fa-walking"></i></div>
+                <div>
+                    <strong>He walks by the river <span style="color:var(--accent-gold);">regularly</span>.</strong>
+                    <br><small>সে নিয়মিত নদীর পাড়ে হাঁটে। (শরীরচর্চা/অভ্যাস)</small>
+                </div>
+            </li>
+        </ul>
+
+        <div class="alert-box">
+            <strong><i class="fas fa-exclamation-circle"></i> সাধারণ ভুল (Common Mistake):</strong><br>
+            অভ্যাস বোঝাতে কখনোই Continuous Tense ব্যবহার করবেন না।<br>
+            <span style="color: #ff4757;">❌ I am walking every day.</span> (ভুল)<br>
+            <span style="color: #2ed573;">✔ I walk every day.</span> (সঠিক)
+        </div>
+
+        <div class="bottom-nav">
+            <a href="lesson-4.html" class="nav-link"><i class="fas fa-arrow-left"></i> আগের লেসন (Present Indefinite)</a>
+            <a href="#" class="nav-link" style="color: var(--accent-blue);">পরবর্তী লেসন (Universal Truth) <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+
+</body>
+</html>
