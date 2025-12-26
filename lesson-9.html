@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>লেসন ৯: Present Continuous Tense</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;600;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-bg: #1a0b2e; 
+            --accent-gold: #ffd700; 
+            --accent-cyan: #00d2d3;
+            --accent-pink: #ff9ff3;
+            --text-white: #f1f5f9;
+            --text-gray: #cbd5e1;
+            --card-glass: rgba(255, 255, 255, 0.05);
+            --border-light: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+
+        body {
+            background-color: var(--primary-bg);
+            color: var(--text-white);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(100, 50, 240, 0.2) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 212, 255, 0.15) 0%, transparent 20%);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.8;
+        }
+
+        /* হোম বাটন */
+        .home-btn {
+            position: fixed;
+            top: 20px; left: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: var(--accent-gold);
+            font-weight: bold;
+            border: 1px solid var(--accent-gold);
+            transition: 0.3s;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .home-btn:hover { background: var(--accent-gold); color: #1a0b2e; }
+
+        /* কন্টেন্ট কন্টেইনার */
+        .content-container {
+            max-width: 900px;
+            margin: 60px auto 40px auto;
+            background: var(--card-glass);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 2.2rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border-light);
+            padding-bottom: 15px;
+        }
+
+        h2 {
+            color: var(--accent-cyan);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        p { margin-bottom: 15px; font-size: 1.1rem; color: var(--text-gray); text-align: justify; }
+
+        /* স্ট্রাকচার বক্স */
+        .structure-box {
+            background: linear-gradient(90deg, rgba(0, 210, 211, 0.1), transparent);
+            border-left: 5px solid var(--accent-cyan);
+            padding: 20px;
+            border-radius: 0 10px 10px 0;
+            margin: 20px 0;
+            position: relative;
+        }
+        .structure-formula {
+            font-family: 'Merriweather', serif;
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        /* Helper Verb Grid */
+        .helper-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 25px 0;
+        }
+        .helper-card {
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            border: 1px solid var(--border-light);
+            transition: 0.3s;
+        }
+        .helper-card:hover { transform: translateY(-5px); border-color: var(--accent-gold); }
+        .helper-title { font-size: 1.5rem; font-weight: bold; display: block; margin-bottom: 5px; }
+        .am-color { color: var(--accent-pink); }
+        .is-color { color: var(--accent-gold); }
+        .are-color { color: var(--accent-cyan); }
+
+        /* উদাহরণ টেবিল */
+        .example-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .example-table th, .example-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .example-table th { background: rgba(0, 212, 255, 0.1); color: var(--accent-cyan); }
+        
+        /* ing টিপস */
+        .tip-box {
+            background: rgba(255, 159, 243, 0.1);
+            border: 1px dashed var(--accent-pink);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 0.95rem;
+        }
+
+        /* নেভিগেশন */
+        .bottom-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-light);
+        }
+        .nav-link { text-decoration: none; color: var(--text-white); font-weight: bold; transition: 0.3s; }
+        .nav-link:hover { color: var(--accent-gold); }
+
+        /* রেসপন্সিভ */
+        @media (max-width: 600px) {
+            .content-container { padding: 20px; }
+            .helper-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 1.6rem; }
+            .structure-formula { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="home-btn">
+        <i class="fas fa-home"></i> Home
+    </a>
+
+    <div class="content-container">
+        <h1>৯. Present Continuous Tense</h1>
+        <p class="subtitle" style="color: var(--accent-cyan); font-weight: bold;">বর্তমানে যা ঘটছে বা চলছে</p>
+        
+        
+
+[Image of Present Continuous Tense chart]
+
+        <img src="https://images.unsplash.com/photo-1542393545-facac7050887?w=800" alt="Running Man" style="width:100%; border-radius:10px; margin: 20px 0; height: 200px; object-fit: cover; opacity: 0.8;">
+
+        <p>
+            বর্তমানে কোনো কাজ হচ্ছে বা চলছে (কাজটি এখনো শেষ হয়নি)—এমন বোঝালে তাকে <strong>Present Continuous Tense</strong> বলে। বাংলায় ক্রিয়ার শেষে সাধারণত 'ছি', 'ছ', 'ছেন' (যেমন: খাচ্ছি, যাচ্ছ, করছেন) থাকে।
+        </p>
+
+        <h2>১. গঠন প্রণালী (Structure)</h2>
+        <p>এই টেন্সের মূল মন্ত্র হলো: <strong>Be Verb (am/is/are)</strong> এর সাথে মূল ভার্বের <strong>ing</strong> ফর্ম।</p>
+
+        <div class="structure-box">
+            <span class="structure-formula">Subject + am / is / are + Verb(ing) + Object.</span>
+        </div>
+
+        <h2>সাহায্যকারী ভার্ব (Auxiliary Verb) কার সাথে কোনটি?</h2>
+        <div class="helper-grid">
+            <div class="helper-card">
+                <span class="helper-title am-color">am</span>
+                <small>শুধুমাত্র <strong>'I'</strong> এর সাথে।</small><br>
+                Example: I am...
+            </div>
+            <div class="helper-card">
+                <span class="helper-title is-color">is</span>
+                <small><strong>He, She, It, Name</strong> (Singular) এর সাথে।</small><br>
+                Example: He is...
+            </div>
+            <div class="helper-card">
+                <span class="helper-title are-color">are</span>
+                <small><strong>You, We, They</strong> (Plural) এর সাথে।</small><br>
+                Example: They are...
+            </div>
+        </div>
+
+        <h2>উদাহরণ (Examples)</h2>
+        <table class="example-table">
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Aux + Verb(ing)</th>
+                    <th>Object/Ext</th>
+                    <th>অর্থ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>I</td>
+                    <td><span class="am-color">am</span> eating</td>
+                    <td>rice.</td>
+                    <td>আমি ভাত খাচ্ছি।</td>
+                </tr>
+                <tr>
+                    <td>The baby</td>
+                    <td><span class="is-color">is</span> sleeping</td>
+                    <td>now.</td>
+                    <td>বাচ্চাটি এখন ঘুমাচ্ছে।</td>
+                </tr>
+                <tr>
+                    <td>We</td>
+                    <td><span class="are-color">are</span> playing</td>
+                    <td>football.</td>
+                    <td>আমরা ফুটবল খেলছি।</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>নেগেটিভ ও প্রশ্নবোধক (Negative & Interrogative)</h2>
+        <p>নেগেটিভ করতে হলে am/is/are এর পরে <strong>not</strong> বসাতে হবে। আর প্রশ্ন করতে হলে am/is/are কে <strong>Subject এর আগে</strong> আনতে হবে।</p>
+        
+        <ul style="color: var(--text-gray); margin-left: 20px; list-style-type: none;">
+            <li style="margin-bottom: 10px;">❌ <strong>Neg:</strong> He is <span style="color:var(--accent-pink)">not</span> reading. (সে পড়ছে না)</li>
+            <li>❓ <strong>Int:</strong> <span style="color:var(--accent-gold)">Is</span> he reading? (সে কি পড়ছে?)</li>
+        </ul>
+
+        <div class="tip-box">
+            <strong><i class="fas fa-lightbulb"></i> বানান টিপস (Spelling Rules for 'ing'):</strong><br>
+            ১. ভার্বের শেষে 'e' থাকলে 'e' উঠে গিয়ে 'ing' হয়। (Come → Coming)<br>
+            ২. ভার্বের শেষে ১টি Consonant এবং তার আগে ১টি Vowel থাকলে শেষের অক্ষরটি দ্বিগুণ (Double) হয়। (Run → Ru<strong>nn</strong>ing, Sit → Si<strong>tt</strong>ing)
+        </div>
+
+        <div class="bottom-nav">
+            <a href="lesson-8.html" class="nav-link"><i class="fas fa-arrow-left"></i> আগের লেসন (3rd Person Rule)</a>
+            <a href="#" class="nav-link" style="color: var(--accent-cyan);">পরবর্তী লেসন (Changing Situations) <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+
+</body>
+</html>
