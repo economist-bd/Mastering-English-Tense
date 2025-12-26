@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>লেসন ১: Tense কী এবং কেন?</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;600;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-bg: #1a0b2e; 
+            --accent-gold: #ffd700; 
+            --accent-blue: #00d4ff; 
+            --text-white: #f1f5f9;
+            --text-gray: #cbd5e1;
+            --card-glass: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+
+        body {
+            background-color: var(--primary-bg);
+            color: var(--text-white);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(100, 50, 240, 0.2) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 212, 255, 0.15) 0%, transparent 20%);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.8;
+        }
+
+        /* হোম বাটন (উপরে বামে ফিক্সড) */
+        .home-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: var(--accent-gold);
+            font-weight: bold;
+            border: 1px solid var(--accent-gold);
+            transition: 0.3s;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .home-btn:hover {
+            background: var(--accent-gold);
+            color: #1a0b2e;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+        }
+
+        /* মেইন কন্টেন্ট কন্টেইনার */
+        .content-container {
+            max-width: 800px;
+            margin: 60px auto 40px auto; /* উপরে জায়গা রাখা হয়েছে হোম বাটনের জন্য */
+            background: var(--card-glass);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 15px;
+        }
+
+        h2 {
+            color: var(--accent-blue);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            text-align: justify;
+        }
+
+        /* হাইলাইট বক্স */
+        .highlight-box {
+            background: rgba(0, 212, 255, 0.1);
+            border-left: 4px solid var(--accent-blue);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .highlight-box strong {
+            color: var(--accent-blue);
+        }
+
+        /* উদাহরণ টেবিল */
+        .example-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .example-table th, .example-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .example-table th {
+            background: rgba(255, 215, 0, 0.1);
+            color: var(--accent-gold);
+        }
+
+        .wrong { color: #ef4444; }
+        .right { color: #10b981; }
+
+        /* নিচের নেভিগেশন */
+        .bottom-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-white);
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .nav-link:hover { color: var(--accent-gold); }
+
+        /* রেসপন্সিভ */
+        @media (max-width: 600px) {
+            .content-container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            .home-btn { top: 10px; left: 10px; padding: 8px 15px; font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="home-btn">
+        <i class="fas fa-home"></i> Home
+    </a>
+
+    <div class="content-container">
+        <h1>১. Tense কী এবং কেন?</h1>
+        <p class="subtitle" style="color: var(--accent-blue); font-weight: bold;">সময় এবং ক্রিয়ার সম্পর্ক বোঝার প্রথম ধাপ</p>
+
+        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800" alt="Time Concept" style="width:100%; border-radius:10px; margin: 20px 0; height: 250px; object-fit: cover;">
+
+        <h2>Tense এর পরিচয় (Introduction)</h2>
+        <p>
+            ইংরেজি ব্যাকরণে <strong>Tense</strong> শব্দটিকে বলা হয় 'Soul of English Language' বা ইংরেজি ভাষার আত্মা। আভিধানিক অর্থে Tense মানে হলো 'কাল' বা 'সময়'। সোজা কথায়, কোনো একটি কাজ কখন সম্পন্ন হচ্ছে—সেটা কি এখন হচ্ছে, অতীতে হয়েছিল, নাকি ভবিষ্যতে হবে—এই সময়টি নির্ধারণ করাই হলো Tense এর কাজ।
+        </p>
+        <p>
+            ব্যাকরণগত ভাষায় বলতে গেলে: <em>"Verb বা ক্রিয়া সম্পন্ন হওয়ার সময়কেই Tense বলে।"</em>
+        </p>
+
+        <div class="highlight-box">
+            <strong>💡 উৎপত্তি (Etymology):</strong><br>
+            Tense শব্দটি এসেছে ল্যাটিন শব্দ <strong>'Tempus'</strong> থেকে, যার অর্থ হলো Time বা সময়। যদিও Time এবং Tense এর মধ্যে কিছুটা পার্থক্য আছে (যা আমরা পরবর্তী লেসনে শিখব), তবুও প্রাথমিকভাবে একে সময় হিসেবেই ধরে নেওয়া হয়।
+        </div>
+
+        <h2>Tense কেন শিখব? (Importance)</h2>
+        <p>
+            অনেকে মনে করেন শুধু শব্দের অর্থ জানলেই ইংরেজি বলা যায়। এটি একটি ভুল ধারণা। শব্দের অর্থ হলো ইটের মতো, আর Tense হলো সিমেন্টের মতো যা সেই ইটগুলোকে জোড়া লাগিয়ে একটি অর্থপূর্ণ দালান (বাক্য) তৈরি করে। Tense ছাড়া মনের ভাব প্রকাশ করা অসম্ভব।
+        </p>
+        <p>
+            নিচের উদাহরণটি দেখুন। যদি আমরা Tense বা সময়ের সঠিক ব্যবহার না জানি, তবে বাক্যের অর্থ কীভাবে হাস্যকর বা বিভ্রান্তিকর হয়ে যেতে পারে:
+        </p>
+
+        <table class="example-table">
+            <thead>
+                <tr>
+                    <th>পরিস্থিতি</th>
+                    <th>ভুল বাক্য (Wrong Tense)</th>
+                    <th>সঠিক বাক্য (Correct Tense)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>অতীতের কথা</td>
+                    <td>Yesterday I <span class="wrong">go</span> to Dhaka. <br>*(কাল আমি ঢাকা যাই)*</td>
+                    <td>Yesterday I <span class="right">went</span> to Dhaka. <br>*(কাল আমি ঢাকা গিয়েছিলাম)*</td>
+                </tr>
+                <tr>
+                    <td>ভবিষ্যতের কথা</td>
+                    <td>Tomorrow I <span class="wrong">eat</span> rice. <br>*(আগামীকাল আমি ভাত খাই)*</td>
+                    <td>Tomorrow I <span class="right">will eat</span> rice. <br>*(আগামীকাল আমি ভাত খাব)*</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>
+            উপরের টেবিলে লক্ষ্য করুন, শুধুমাত্র Verb এর রূপ পরিবর্তন না করার কারণে শ্রোতা বুঝতে পারবে না কাজটি হয়ে গেছে নাকি হবে। তাই সঠিক যোগাযোগ (Communication) স্থাপনের জন্য Tense শেখা অপরিহার্য।
+        </p>
+
+        <h2>Tense এর প্রধান স্তম্ভসমূহ</h2>
+        <p>
+            সময়কে প্রধানত তিনটি ভাগে ভাগ করা যায়। পৃথিবীর যেকোনো কাজ এই তিনটি সময়ের যেকোনো একটিতেই ঘটতে বাধ্য:
+        </p>
+        <ul style="margin-left: 20px; color: var(--text-gray);">
+            <li style="margin-bottom: 10px;"><strong>Present Tense (বর্তমান কাল):</strong> যা এখন হচ্ছে বা সচরাচর হয়। (যেমন: আমি পড়ি)</li>
+            <li style="margin-bottom: 10px;"><strong>Past Tense (অতীত কাল):</strong> যা আগে হয়ে গেছে। (যেমন: আমি পড়েছিলাম)</li>
+            <li style="margin-bottom: 10px;"><strong>Future Tense (ভবিষ্যৎ কাল):</strong> যা পরে ঘটবে। (যেমন: আমি পড়ব)</li>
+        </ul>
+
+        <h2>উপসংহার</h2>
+        <p>
+            ইংরেজি ভাষায় দক্ষতা অর্জনের জন্য Tense এর কোনো বিকল্প নেই। এটি শুধু গ্রামারের একটি অধ্যায় নয়, বরং এটি ভাষা ব্যবহারের মূল ভিত্তি। আমরা এই কোর্সের পরবর্তী ধাপগুলোতে প্রতিটি Tense এর খুঁটিনাটি গঠন এবং ব্যবহারিক প্রয়োগ শিখব।
+        </p>
+
+        <div class="bottom-nav">
+            <a href="index.html" class="nav-link"><i class="fas fa-arrow-left"></i> ব্যাক টু হোম</a>
+            <a href="#" class="nav-link" style="color: var(--accent-blue);">পরবর্তী লেসন (Time vs Tense) <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+
+</body>
+</html>
