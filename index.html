@@ -321,6 +321,28 @@
     <script>
         // ৫০টি কার্ডের সম্পূর্ণ ডাটাবেস (Tense Masterclass)
         const tenseData = [
+
+            { 
+                title: "১. Tense কী এবং কেন?", 
+                level: "Basic", 
+                desc: "Tense এর আভিধানিক অর্থ কাল বা সময়। ইংরেজি বাক্যে সময় নির্ধারণের জন্য Tense এর গুরুত্ব অপরিসীম।", 
+                structure: "Latin শব্দ 'Tempus' থেকে Tense এসেছে।", 
+                example: "আমি খাই (Present) vs আমি খেয়েছিলাম (Past)।", 
+                img: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=500",
+                
+                // এই লাইনটি যুক্ত করুন 👇
+                pageLink: "lesson-1.html" 
+            },
+            
+            { 
+                title: "২. Time vs. Tense", 
+                // বাকিগুলোতে লিংক না দিলেও চলবে, অথবা ভবিষ্যতে lesson-2.html দিতে পারেন
+                level: "Basic", 
+                // ...
+            },
+            // ... অন্যান্য কার্ডসমূহ ...
+        
+            
             // --- INTRODUCTION ---
             { title: "১. Tense কী এবং কেন?", level: "Basic", desc: "Tense এর আভিধানিক অর্থ কাল বা সময়। ইংরেজি বাক্যে সময় নির্ধারণের জন্য Tense এর গুরুত্ব অপরিসীম।", structure: "Latin শব্দ 'Tempus' থেকে Tense এসেছে।", example: "আমি খাই (Present) vs আমি খেয়েছিলাম (Past)।", img: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=500" },
             { title: "২. Time vs. Tense", level: "Basic", desc: "Time হলো একটি প্রাকৃতিক ধারণা, আর Tense হলো ব্যাকরণগত ধারণা। সব সময় Time এবং Tense এক হয় না।", structure: "Concept = Reality vs Grammar.", example: "'The bus leaves at 5 PM tomorrow.' (Present Simple কিন্তু Future Time)।", img: "https://images.unsplash.com/photo-1501139083538-0139583c61ee?w=500" },
@@ -398,12 +420,16 @@
 
         // কার্ড জেনারেশন লুপ
         // কার্ড জেনারেশন লুপ
+        tenseData.forEach((item, index) => // কার্ড জেনারেশন লুপ
         tenseData.forEach((item, index) => {
             const isReverse = index % 2 !== 0 ? 'reverse' : ''; 
             
             let lvlClass = 'lvl-basic';
             if(item.level.includes('Inter')) lvlClass = 'lvl-inter';
             if(item.level.includes('Adv') || item.level.includes('Uni')) lvlClass = 'lvl-adv';
+
+            // লজিক: যদি item.pageLink থাকে, তাহলে লিংকে যাবে। না থাকলে মডাল ওপেন করবে।
+            const detailsAction = item.pageLink ? `window.location.href='${item.pageLink}'` : `openModal(${index})`;
 
             const html = `
                 <div class="feature-row ${isReverse}">
@@ -419,7 +445,8 @@
                         
                         <div class="btn-group">
                             <button class="btn btn-enroll" onclick="event.stopPropagation(); window.location.href='contact.html'">Start Lesson</button>
-                            <button class="btn btn-more">View Details</button>
+                            
+                            <button class="btn btn-more" onclick="event.stopPropagation(); ${detailsAction}">আরো বিস্তারিত পড়ুন</button>
                         </div>
                     </div>
                     
