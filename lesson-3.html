@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>লেসন ৩: Tense এর প্রকারভেদ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;600;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-bg: #1a0b2e; 
+            --accent-gold: #ffd700; 
+            --accent-blue: #00d4ff; 
+            --text-white: #f1f5f9;
+            --text-gray: #cbd5e1;
+            --card-glass: rgba(255, 255, 255, 0.05);
+            --border-light: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+
+        body {
+            background-color: var(--primary-bg);
+            color: var(--text-white);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(100, 50, 240, 0.2) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 212, 255, 0.15) 0%, transparent 20%);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.8;
+        }
+
+        /* হোম বাটন */
+        .home-btn {
+            position: fixed;
+            top: 20px; left: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: var(--accent-gold);
+            font-weight: bold;
+            border: 1px solid var(--accent-gold);
+            transition: 0.3s;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .home-btn:hover { background: var(--accent-gold); color: #1a0b2e; }
+
+        /* কন্টেন্ট কন্টেইনার */
+        .content-container {
+            max-width: 900px; /* টেবিলের জন্য একটু বড় করা হয়েছে */
+            margin: 60px auto 40px auto;
+            background: var(--card-glass);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 2.2rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border-light);
+            padding-bottom: 15px;
+        }
+
+        h2 {
+            color: var(--accent-blue);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        p { margin-bottom: 15px; font-size: 1.1rem; color: var(--text-gray); text-align: justify; }
+
+        /* ৪টি প্রকারের গ্রিড কার্ড */
+        .types-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .type-card {
+            background: rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent-gold);
+        }
+        .type-card h3 { font-size: 1.1rem; margin-bottom: 5px; color: #fff; }
+        .type-card small { color: #aaa; }
+
+        /* মাস্টার টেবিল */
+        .master-table-container {
+            overflow-x: auto; /* মোবাইলে টেবিল স্ক্রল করার জন্য */
+            margin-top: 20px;
+            border-radius: 10px;
+            border: 1px solid var(--border-light);
+        }
+
+        .master-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px; /* যাতে মোবাইলে ভেঙে না যায় */
+        }
+
+        .master-table th, .master-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .master-table th {
+            background: rgba(255, 215, 0, 0.1);
+            color: var(--accent-gold);
+            font-weight: bold;
+        }
+
+        .master-table tr:hover { background: rgba(255,255,255,0.05); }
+
+        .verb-highlight { color: var(--accent-blue); font-weight: bold; }
+
+        /* নেভিগেশন */
+        .bottom-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-light);
+        }
+        .nav-link { text-decoration: none; color: var(--text-white); font-weight: bold; transition: 0.3s; }
+        .nav-link:hover { color: var(--accent-gold); }
+
+        /* রেসপন্সিভ */
+        @media (max-width: 600px) {
+            .content-container { padding: 20px; }
+            .types-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="home-btn">
+        <i class="fas fa-home"></i> Home
+    </a>
+
+    <div class="content-container">
+        <h1>৩. Tense এর প্রকারভেদ</h1>
+        <p class="subtitle" style="color: var(--accent-blue); font-weight: bold;">৩টি কাল এবং ৪টি অবস্থার সম্পূর্ণ হিসাব (The 3x4 Rule)</p>
+
+        <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800" alt="Grammar Books" style="width:100%; border-radius:10px; margin: 20px 0; height: 200px; object-fit: cover; opacity: 0.8;">
+
+        <p>
+            আমরা জানি প্রধান কাল বা সময় ৩টি: <strong>Present</strong> (বর্তমান), <strong>Past</strong> (অতীত), এবং <strong>Future</strong> (ভবিষ্যৎ)। কিন্তু কোনো কাজ এই সময়ের মধ্যে ঠিক কোন অবস্থায় আছে (চলছে, শেষ হয়েছে, নাকি অনির্দিষ্ট), তার ওপর ভিত্তি করে প্রত্যেকটি কালকে আবার ৪ ভাগে ভাগ করা হয়েছে।
+        </p>
+
+        <div style="background: rgba(255,255,255,0.05); padding: 15px; text-align: center; border-radius: 10px; margin-bottom: 20px;">
+            <h3 style="color: var(--accent-gold);">গাণিতিক সূত্র:</h3>
+            <p style="margin:0; font-size: 1.2rem;">৩ (সময়) × ৪ (অবস্থা) = <span style="color: var(--accent-blue); font-weight:bold;">১২ প্রকার Tense</span></p>
+        </div>
+
+        <h2>৪টি অবস্থা (Aspects) কী কী?</h2>
+        <div class="types-grid">
+            <div class="type-card">
+                <h3>1. Indefinite (অনির্দিষ্ট)</h3>
+                <small>কাজটি সাধারণভাবে হয়, কিন্তু নির্দিষ্ট কোনো সময় বা চলমান অবস্থা বোঝায় না।</small>
+            </div>
+            <div class="type-card">
+                <h3>2. Continuous (চলমান)</h3>
+                <small>কাজটি বর্তমানে, অতীতে বা ভবিষ্যতে চলতে থাকবে। (Always Verb+ing)</small>
+            </div>
+            <div class="type-card">
+                <h3>3. Perfect (পুরাঘটিত)</h3>
+                <small>কাজটি শেষ হয়ে গেছে, কিন্তু তার ফলাফল বা রেশ এখনো আছে বা ছিল।</small>
+            </div>
+            <div class="type-card">
+                <h3>4. Perfect Continuous</h3>
+                <small>কোনো কাজ দীর্ঘ সময় ধরে চলছে বা চলছিল বোঝালে এটি হয়।</small>
+            </div>
+        </div>
+
+        <h2>The Master Table (১২ প্রকার একনজরে)</h2>
+        <p>নিচের টেবিলে <strong>'Play' (খেলা)</strong> ভার্ব দিয়ে ১২টি টেন্সের পরিবর্তন দেখানো হলো। এটি মুখস্ত রাখলে টেন্স পানির মতো সহজ হয়ে যাবে।</p>
+        
+        <div class="master-table-container">
+            <table class="master-table">
+                <thead>
+                    <tr>
+                        <th width="20%">Form</th>
+                        <th>Present (বর্তমান)</th>
+                        <th>Past (অতীত)</th>
+                        <th>Future (ভবিষ্যৎ)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Indefinite</strong></td>
+                        <td>I <span class="verb-highlight">play</span> football.</td>
+                        <td>I <span class="verb-highlight">played</span> football.</td>
+                        <td>I <span class="verb-highlight">will play</span> football.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Continuous</strong></td>
+                        <td>I am <span class="verb-highlight">playing</span>.</td>
+                        <td>I was <span class="verb-highlight">playing</span>.</td>
+                        <td>I will be <span class="verb-highlight">playing</span>.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Perfect</strong></td>
+                        <td>I have <span class="verb-highlight">played</span>.</td>
+                        <td>I had <span class="verb-highlight">played</span>.</td>
+                        <td>I will have <span class="verb-highlight">played</span>.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Perf. Cont.</strong></td>
+                        <td>I have been <span class="verb-highlight">playing</span>.</td>
+                        <td>I had been <span class="verb-highlight">playing</span>.</td>
+                        <td>I will have been <span class="verb-highlight">playing</span>.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p style="margin-top: 20px; font-style: italic; color: #aaa;">
+            *নোট: পরবর্তী লেসনগুলোতে আমরা প্রতিটি ভাগের বিস্তারিত নিয়ম এবং উদাহরণ শিখব।
+        </p>
+
+        <div class="bottom-nav">
+            <a href="lesson-2.html" class="nav-link"><i class="fas fa-arrow-left"></i> আগের লেসন (Time vs Tense)</a>
+            <a href="#" class="nav-link" style="color: var(--accent-blue);">পরবর্তী লেসন (Present Indefinite) <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+
+</body>
+</html>
