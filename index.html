@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastering English Tense | Monjurul Haque</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;500;600;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-bg: #1a0b2e; /* ডিপ পার্পল ব্যাকগ্রাউন্ড */
+            --accent-gold: #ffd700; /* গ্রামারের প্রিমিয়াম ভাব */
+            --accent-blue: #00d4ff; /* মডার্ন ভাব */
+            --text-white: #f1f5f9;
+            --card-glass: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+
+        body {
+            background-color: var(--primary-bg);
+            color: var(--text-white);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(100, 50, 240, 0.2) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 212, 255, 0.15) 0%, transparent 20%);
+            min-height: 100vh;
+        }
+
+        /* --- হেডার --- */
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(to bottom, rgba(26, 11, 46, 1), transparent);
+            position: relative;
+            z-index: 10;
+        }
+
+        h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 3rem;
+            background: linear-gradient(to right, var(--accent-gold), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* --- কন্টেইনার ও সেন্ট্রাল লাইন --- */
+        .features-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative; /* লাইন ঠিক রাখার জন্য */
+        }
+
+        .center-line {
+            position: absolute;
+            left: 50%; top: 0; bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, transparent, var(--accent-gold), var(--accent-blue), transparent);
+            transform: translateX(-50%);
+            z-index: 0;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        /* --- কার্ড ডিজাইন --- */
+        .feature-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 80px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .glass-card {
+            background: var(--card-glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 25px;
+            width: 45%;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+        }
+
+        /* কানেক্টর ডট */
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 16px; height: 16px;
+            background: var(--accent-gold);
+            border: 2px solid white;
+            border-radius: 50%;
+            box-shadow: 0 0 15px var(--accent-gold);
+        }
+
+        /* বাম পাশের কার্ডের ডট */
+        .feature-row:not(.reverse) .glass-card::before {
+            right: -13.5%;
+        }
+
+        /* ডান পাশের কার্ডের ডট */
+        .feature-row.reverse .glass-card::before {
+            left: -13.5%;
+        }
+
+        /* বড় স্ক্রিনে ডট পজিশন ফিক্স */
+        @media (min-width: 1025px) {
+            .feature-row:not(.reverse) .glass-card::before { right: -12.3%; }
+            .feature-row.reverse .glass-card::before { left: -12.3%; }
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .card-number {
+            font-family: 'Merriweather', serif;
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.2);
+            font-weight: 900;
+        }
+
+        .level-badge {
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .lvl-basic { background: #10b981; color: #fff; }
+        .lvl-inter { background: #3b82f6; color: #fff; }
+        .lvl-adv { background: #ef4444; color: #fff; }
+
+        .card-title {
+            color: var(--accent-gold);
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .btn-group {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .btn-enroll {
+            background: linear-gradient(45deg, #ffd700, #ffaa00);
+            color: #1a0b2e;
+            border: none;
+        }
+        .btn-enroll:hover { box-shadow: 0 0 15px rgba(255, 215, 0, 0.5); }
+
+        .btn-more {
+            background: transparent;
+            border: 1px solid var(--accent-blue);
+            color: var(--accent-blue);
+        }
+        .btn-more:hover { background: rgba(0, 212, 255, 0.1); }
+
+        /* --- ইমেজেস --- */
+        .floating-img {
+            width: 45%;
+            text-align: center;
+        }
+
+        .floating-img img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: transform 0.5s;
+            filter: brightness(0.8);
+        }
+
+        .feature-row:hover .floating-img img {
+            transform: scale(1.03);
+            filter: brightness(1);
+        }
+
+        .feature-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        /* --- রেসপন্সিভ --- */
+        @media (max-width: 768px) {
+            .center-line { left: 20px; width: 2px; }
+            .feature-row, .feature-row.reverse {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-left: 35px; /* লাইনের ডান পাশে */
+                margin-bottom: 40px;
+                gap: 15px;
+            }
+            .glass-card, .floating-img { width: 100%; }
+            .floating-img { margin-top: 10px; order: 2; height: 150px; }
+            .floating-img img { height: 150px; }
+            .glass-card { order: 1; padding: 20px; }
+            .glass-card::before { display: none; } /* মোবাইলে ডট অফ */
+            h1 { font-size: 2rem; }
+        }
+
+        /* --- মডাল --- */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.95);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .modal-content {
+            background: linear-gradient(135deg, #1e1b4b, #0f172a);
+            padding: 30px;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 650px;
+            border: 1px solid var(--accent-gold);
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 0 50px rgba(255, 215, 0, 0.1);
+        }
+        .modal-body {
+            color: #e2e8f0;
+            line-height: 1.7;
+        }
+        .example-box {
+            background: rgba(255,255,255,0.05);
+            border-left: 3px solid var(--accent-gold);
+            padding: 10px 15px;
+            margin: 15px 0;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>ENGLISH GRAMMAR <br> MASTERCLASS</h1>
+        <p class="subtitle">স্কুল থেকে ইউনিভার্সিটি পর্যন্ত Tense এর খুঁটিনাটি, গঠন এবং ব্যবহারিক উদাহরণের পূর্ণাঙ্গ ৫০ ধাপের গাইডলাইন।</p>
+    </header>
+
+    <div class="features-container" id="tenseContainer">
+        <div class="center-line"></div>
+        </div>
+
+    <div id="detailsModal" class="modal">
+        <div class="modal-content">
+            <span onclick="closeModal()" style="position:absolute; top:15px; right:20px; color:#fff; cursor:pointer; font-size:1.5rem; background:#ef4444; width:30px; height:30px; text-align:center; line-height:30px; border-radius:50%;">&times;</span>
+            
+            <h2 id="mTitle" style="color:var(--accent-gold); margin-bottom:10px; font-family:'Merriweather',serif;"></h2>
+            <div id="mLevel" class="level-badge" style="display:inline-block; margin-bottom:15px;"></div>
+            
+            <img id="mImg" src="" style="width:100%; height:200px; object-fit:cover; border-radius:10px; margin-bottom:20px; border:1px solid rgba(255,255,255,0.2);">
+            
+            <div class="modal-body">
+                <p id="mDesc" style="margin-bottom:15px;"></p>
+                
+                <h4 style="color:var(--accent-blue); margin-top:20px;">📘 গঠন ও ব্যাখ্যা:</h4>
+                <p id="mStructure"></p>
+
+                <div class="example-box">
+                    <strong>💡 উদাহরণ:</strong> <br>
+                    <span id="mExample"></span>
+                </div>
+            </div>
+
+            <div class="btn-group" style="margin-top:25px; border-top:1px solid rgba(255,255,255,0.1); padding-top:20px;">
+                <a href="#" class="btn btn-enroll" id="mEnrollLink" target="_blank">কোর্সটি শুরু করুন</a>
+                <a href="#" class="btn btn-more" id="mMoreLink" target="_blank">আরো বিস্তারিত পড়ুন</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ৫০টি কার্ডের সম্পূর্ণ ডাটাবেস (Tense Masterclass)
+        const tenseData = [
+            // --- INTRODUCTION ---
+            { title: "১. Tense কী এবং কেন?", level: "Basic", desc: "Tense এর আভিধানিক অর্থ কাল বা সময়। ইংরেজি বাক্যে সময় নির্ধারণের জন্য Tense এর গুরুত্ব অপরিসীম।", structure: "Latin শব্দ 'Tempus' থেকে Tense এসেছে।", example: "আমি খাই (Present) vs আমি খেয়েছিলাম (Past)।", img: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=500" },
+            { title: "২. Time vs. Tense", level: "Basic", desc: "Time হলো একটি প্রাকৃতিক ধারণা, আর Tense হলো ব্যাকরণগত ধারণা। সব সময় Time এবং Tense এক হয় না।", structure: "Concept = Reality vs Grammar.", example: "'The bus leaves at 5 PM tomorrow.' (Present Simple কিন্তু Future Time)।", img: "https://images.unsplash.com/photo-1501139083538-0139583c61ee?w=500" },
+            { title: "৩. Tense এর প্রকারভেদ", level: "Basic", desc: "Tense প্রধানত ৩ প্রকার: Present, Past, এবং Future। প্রতিটিকে আবার ৪ ভাগে ভাগ করা যায়।", structure: "3 Main x 4 Aspects = 12 Tenses.", example: "Indefinite, Continuous, Perfect, Perfect Continuous.", img: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=500" },
+            
+            // --- PRESENT INDEFINITE ---
+            { title: "৪. Present Indefinite: গঠন", level: "Basic", desc: "বর্তমান কালের সাধারণ কাজ বুঝাতে এটি ব্যবহৃত হয়।", structure: "Subject + V1 (s/es) + Object", example: "He plays football. (সে ফুটবল খেলে)", img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=500" },
+            { title: "৫. অভ্যাসগত কর্ম (Habitual Fact)", level: "Basic", desc: "প্রতিদিনের অভ্যাস বুঝাতে সর্বদা Present Indefinite হয়।", structure: "Use words like: Daily, Every day, Always.", example: "My mother reads the Quran every morning.", img: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=500" },
+            { title: "৬. চিরন্তন সত্য (Universal Truth)", level: "Basic", desc: "যা অতীতে সত্য ছিল, বর্তমানেও সত্য এবং ভবিষ্যতেও থাকবে।", structure: "Subject + Verb(present form).", example: "The sun rises in the east.", img: "https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=500" },
+            { title: "৭. নিকট ভবিষ্যৎ (Near Future)", level: "Intermediate", desc: "খুব শীঘ্রই কিছু ঘটবে বুঝাতে Future এর বদলে Present Indefinite বসতে পারে।", structure: "Planned future actions.", example: "The school opens next Sunday.", img: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=500" },
+            { title: "৮. থার্ড পারসন সিঙ্গুলার রুলস", level: "Basic", desc: "Subject যদি He, She, It বা কোনো নাম হয়, তবে ভার্বের শেষে s/es বসে।", structure: "He/She/It/Name + V(s/es)", example: "He goes (NOT go) to school.", img: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=500" },
+
+            // --- PRESENT CONTINUOUS ---
+            { title: "৯. Present Continuous: গঠন", level: "Basic", desc: "বর্তমানে কোনো কাজ চলছে বা হচ্ছে বুঝাতে।", structure: "Sub + am/is/are + V1+ing + Obj", example: "I am eating rice.", img: "https://images.unsplash.com/photo-1542393545-facac7050887?w=500" },
+            { title: "১০. চলমান পরিবর্তন (Changing Situations)", level: "Intermediate", desc: "ধীরে ধীরে কোনো অবস্থার পরিবর্তন হচ্ছে বুঝাতে।", structure: "Getting / Becoming verbs.", example: "The weather is getting hotter day by day.", img: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=500" },
+            { title: "১১. Stative Verbs এর নিয়ম", level: "Advanced", desc: "কিছু ভার্ব (See, Like, Love, Hear) এর সাথে সাধারণত ing হয় না।", structure: "Non-continuous verbs list.", example: "I like coffee (NOT I am liking coffee).", img: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=500" },
+
+            // --- PRESENT PERFECT ---
+            { title: "১২. Present Perfect: গঠন", level: "Basic", desc: "কাজ শেষ হয়েছে কিন্তু তার ফল এখনও বিদ্যমান।", structure: "Sub + have/has + V3 + Obj", example: "I have finished my homework.", img: "https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=500" },
+            { title: "১৩. Just, Already, Yet এর ব্যবহার", level: "Intermediate", desc: "এই শব্দগুলো থাকলে সাধারণত Present Perfect Tense হয়।", structure: "Just/Already + V3", example: "He has just arrived.", img: "https://images.unsplash.com/photo-1524678606372-987b780f65f3?w=500" },
+            { title: "১৪. Present Perfect vs Past Simple", level: "Advanced", desc: "অতীতের নির্দিষ্ট সময় উল্লেখ থাকলে Past Simple হয়, না থাকলে Present Perfect.", structure: "Specific Time = Past Simple.", example: "I saw him yesterday (Past) vs I have seen him (Perfect).", img: "https://images.unsplash.com/photo-1453733190371-0a9bedd82893?w=500" },
+
+            // --- PRESENT PERFECT CONTINUOUS ---
+            { title: "১৫. Present Perf. Continuous: গঠন", level: "Intermediate", desc: "কোনো কাজ অতীতে শুরু হয়ে এখনও চলছে।", structure: "Sub + have/has + been + V1+ing", example: "It has been raining for two hours.", img: "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?w=500" },
+            { title: "১৬. Since বনাম For", level: "Intermediate", desc: "নির্দিষ্ট সময়ের শুরু (Point of time) হলে Since, সময়ের ব্যপ্তি (Period) হলে For.", structure: "Since Morning / For 2 hours.", example: "He has been reading since morning.", img: "https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=500" },
+
+            // --- PAST INDEFINITE ---
+            { title: "১৭. Past Indefinite: গঠন", level: "Basic", desc: "অতীতে কোনো কাজ শেষ হয়েছিল।", structure: "Sub + V2 (Past Form) + Obj", example: "I went to Dhaka yesterday.", img: "https://images.unsplash.com/photo-1533422902779-aff35862e462?w=500" },
+            { title: "১৮. অতীতের অভ্যাস (Past Habit)", level: "Intermediate", desc: "অতীতে নিয়মিত কিছু করতেন বুঝাতে 'Used to' ব্যবহৃত হয়।", structure: "Used to + V1", example: "I used to play cricket in my childhood.", img: "https://images.unsplash.com/photo-1516738901171-8eb4fc13bd20?w=500" },
+            { title: "১৯. Historical Events", level: "Basic", desc: "ঐতিহাসিক ঘটনা বর্ণনায় সর্বদা Past Indefinite হয়।", structure: "Dates in history.", example: "Bangladesh became independent in 1971.", img: "https://images.unsplash.com/photo-1533722218177-3e351474ddb0?w=500" },
+
+            // --- PAST CONTINUOUS ---
+            { title: "২০. Past Continuous: গঠন", level: "Basic", desc: "অতীতে কোনো কাজ কিছু সময় ধরে চলছিল।", structure: "Sub + was/were + V1+ing", example: "I was watching TV when he came.", img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500" },
+            { title: "২১. While এর ব্যবহার", level: "Intermediate", desc: "While এর ঠিক পরে verb থাকলে ing হয়, বা subject থাকলে Past Continuous হয়।", structure: "While + S + was/were + ing", example: "While I was walking, I saw a snake.", img: "https://images.unsplash.com/photo-1500964757637-c85e8a162699?w=500" },
+
+            // --- PAST PERFECT ---
+            { title: "২২. Past Perfect: গঠন ও ব্যবহার", level: "Intermediate", desc: "অতীতে দুটি কাজের মধ্যে যেটি আগে হয়েছিল সেটি Past Perfect.", structure: "Sub + had + V3", example: "The patient had died before the doctor came.", img: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=500" },
+            { title: "২৩. Before এবং After এর নিয়ম", level: "Intermediate", desc: "Before এর আগে Past Perfect, After এর পরে Past Perfect.", structure: "Had + V3 before V2 | V2 after Had + V3", example: "I had reached the station before the train left.", img: "https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=500" },
+            
+            // --- PAST PERFECT CONTINUOUS ---
+            { title: "২৪. Past Perf. Continuous", level: "Advanced", desc: "অতীতে একটি কাজের পূর্বে আরেকটি কাজ দীর্ঘ সময় ধরে চলছিল।", structure: "Sub + had been + V1+ing", example: "He had been trying for 2 years before he got the job.", img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500" },
+
+            // --- FUTURE TENSES ---
+            { title: "২৫. Future Indefinite: গঠন", level: "Basic", desc: "ভবিষ্যতে কোনো কাজ হবে।", structure: "Sub + will/shall + V1", example: "I will buy a new laptop.", img: "https://images.unsplash.com/photo-1531297461136-82lw9z4a9b?w=500" },
+            { title: "২৬. Going to vs Will", level: "Intermediate", desc: "Will অনিশ্চিত বা তাৎক্ষণিক সিদ্ধান্তে, Going to নিশ্চিত পরিকল্পনায়।", structure: "Be going to + V1", example: "I am going to buy a car (Plan). I will probably go (Uncertain).", img: "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=500" },
+            { title: "২৭. Future Continuous", level: "Basic", desc: "ভবিষ্যতে কোনো কাজ চলতে থাকবে।", structure: "Sub + will be + V1+ing", example: "I will be waiting for you.", img: "https://images.unsplash.com/photo-1499750310159-5b600cdf0a7a?w=500" },
+            { title: "২৮. Future Perfect", level: "Advanced", desc: "ভবিষ্যতে নির্দিষ্ট সময়ের মধ্যে কোনো কাজ শেষ হয়ে থাকবে।", structure: "Sub + will have + V3", example: "I will have finished the book by Monday.", img: "https://images.unsplash.com/photo-1506784926709-22f1ec395907?w=500" },
+            { title: "২৯. By + Time এর ব্যবহার", level: "Advanced", desc: "Future Perfect Tense এ সময়ের আগে By বসে।", structure: "By next week / By 2026", example: "We will have reached there by 5 PM.", img: "https://images.unsplash.com/photo-1501139083538-0139583c61ee?w=500" },
+            { title: "৩০. Future Perf. Continuous", level: "Advanced", desc: "ভবিষ্যতে কোনো নির্দিষ্ট সময় পর্যন্ত কোনো কাজ চলতে থাকবে।", structure: "will have been + V1+ing", example: "Next year, I will have been working here for 10 years.", img: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=500" },
+
+            // --- ADVANCED CONCEPTS & SIMULATIONS ---
+            { title: "৩১. Sequence of Tense", level: "Advanced", desc: "Principal Clause এর টেন্স অনুযায়ী Subordinate Clause এর টেন্স পরিবর্তন।", structure: "Past follows Past.", example: "He said that he was (not is) happy.", img: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=500" },
+            { title: "৩২. First Conditional", level: "Intermediate", desc: "সম্ভাব্য ভবিষ্যৎ শর্ত।", structure: "If + Present Indefinite, Future Indefinite.", example: "If you come, I will go.", img: "https://images.unsplash.com/photo-1539628399213-d6c4e6736f26?w=500" },
+            { title: "৩৩. Second Conditional", level: "Intermediate", desc: "অবাস্তব বর্তমান কল্পনা।", structure: "If + Past Indefinite, Subject + would + V1.", example: "If I were a bird, I would fly.", img: "https://images.unsplash.com/photo-1444464666117-be64345a2716?w=500" },
+            { title: "৩৪. Third Conditional", level: "Advanced", desc: "অতীতের আফসোস (যা আর পরিবর্তন সম্ভব নয়)।", structure: "If + Past Perfect, Sub + would have + V3.", example: "If I had studied, I would have passed.", img: "https://images.unsplash.com/photo-1528642474493-2276c8c2006d?w=500" },
+            { title: "৩৫. Zero Conditional", level: "Advanced", desc: "বৈজ্ঞানিক সত্য বা সাধারণ সত্য।", structure: "If + Present, Present.", example: "If you heat ice, it melts.", img: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=500" },
+            { title: "৩৬. Passive Voice: Present", level: "Basic", desc: "Tense অনুযায়ী Passive এর গঠন পরিবর্তন হয়।", structure: "am/is/are + V3", example: "Rice is eaten by me.", img: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=500" },
+            { title: "৩৭. Passive Voice: Past", level: "Basic", desc: "অতীতের প্যাসিভ গঠন।", structure: "was/were + V3", example: "The work was done.", img: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=500" },
+            { title: "৩৮. Modal Auxiliaries in Tense", level: "Intermediate", desc: "Can, Could, May, Might এর টেন্সগত ব্যবহার।", structure: "Can (Present) -> Could (Past).", example: "I can do it. / I could do it.", img: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=500" },
+            { title: "৩৯. Since as a Conjunction", level: "Advanced", desc: "Since এর আগের অংশ Present হলে পরের অংশ Past Indefinite.", structure: "Pres. Perfect + Since + Past Indefinite", example: "It is many years since we met.", img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=500" },
+            { title: "৪০. Since (Rule 2)", level: "Advanced", desc: "Since এর আগের অংশ Past Indefinite হলে পরের অংশ Past Perfect.", structure: "Past Ind. + Since + Past Perf.", example: "It was long since I had seen her.", img: "https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=500" },
+            { title: "৪১. Right Form of Verbs (1)", level: "Intermediate", desc: "বাক্যে কোনো সময়ের উল্লেখ না থাকলে এবং সাধারণ সত্য হলে Present Indefinite.", structure: "Basic Rules.", example: "Man is mortal.", img: "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=500" },
+            { title: "৪২. Right Form of Verbs (2)", level: "Advanced", desc: "As if / As though থাকলে পরের অংশ Past Indefinite বা were হয়।", structure: "Talks as if he knew everything.", example: "He talks as if he were a leader.", img: "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?w=500" },
+            { title: "৪৩. Exception: Be to / Have to", level: "Advanced", desc: "বাধ্যবাধকতা বা পরিকল্পনা বুঝাতে।", structure: "I am to go (আমাকে যেতে হয়/হবে)।", example: "He has to do the work.", img: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=500" },
+            { title: "৪৪. Exception: Newspaper Headlines", level: "Advanced", desc: "পত্রিকার হেডলাইনে অতীতের ঘটনাও Present Indefinite এ লেখা হয়।", structure: "Contextual Grammar.", example: "Prime Minister visits India (গতকাল ভিজিট করেছে, তবুও visits).", img: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=500" },
+            { title: "৪৫. Simulation: Story Telling", level: "Simulation", desc: "গল্প বলার সময় সাধারণত Past Tense ব্যবহার হয়, কিন্তু নাটকীয়তা আনতে Present ব্যবহার হয়।", structure: "Narrative Tense.", example: "Suddenly the tiger jumps (jumped এর বদলে) on the deer!", img: "https://images.unsplash.com/photo-1478720568477-152d9b164e63?w=500" },
+            { title: "৪৬. Common Mistake: Did + V2", level: "Basic", desc: "Did ব্যবহার করলে মূল ভার্বের প্রেজেন্ট ফর্ম হয়।", structure: "Did + V1 (Never V2).", example: "Did you go? (NOT Did you went?)", img: "https://images.unsplash.com/photo-1525785967371-87ba44b3e6cf?w=500" },
+            { title: "৪৭. Common Mistake: Two Futures", level: "Intermediate", desc: "একই বাক্যে দুটি Future Tense (will) সাধারণত বসে না।", structure: "Time clause takes Present.", example: "When he comes (NOT will come), I will go.", img: "https://images.unsplash.com/photo-1518932945647-7a1c969f8be2?w=500" },
+            { title: "৪৮. Causative Verbs & Tense", level: "Advanced", desc: "কাউকে দিয়ে কিছু করানো বুঝাতে। Make, Get, Have এর ব্যবহার।", structure: "Subject + make + object + V1", example: "He made me do it.", img: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=500" },
+            { title: "৪৯. Subjunctive Mood", level: "Uni Level", desc: "চাহিদা, প্রস্তাব বা আদেশের ক্ষেত্রে Tense এর সাধারণ নিয়ম খাটে না।", structure: "Suggest that + S + V1 (Base form).", example: "I suggest that he go (NOT goes) there.", img: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=500" },
+            { title: "৫০. Final Review & Test", level: "All Levels", desc: "৫০টি ধাপ শেষ করার পর নিজেকে যাচাই করার চূড়ান্ত টিপস।", structure: "Practice makes perfect.", example: "Translate 10 sentences daily.", img: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=500" }
+        ];
+
+        const container = document.getElementById('tenseContainer');
+
+        // কার্ড জেনারেশন লুপ
+        tenseData.forEach((item, index) => {
+            const isReverse = index % 2 !== 0 ? 'reverse' : ''; // জিগ-জ্যাগ লজিক
+            
+            // লেভেল অনুযায়ী কালার ক্লাস
+            let lvlClass = 'lvl-basic';
+            if(item.level.includes('Inter')) lvlClass = 'lvl-inter';
+            if(item.level.includes('Adv') || item.level.includes('Uni')) lvlClass = 'lvl-adv';
+
+            const html = `
+                <div class="feature-row ${isReverse}">
+                    <div class="glass-card" onclick="openModal(${index})">
+                        <div class="card-header">
+                            <span class="level-badge ${lvlClass}">${item.level}</span>
+                            <span class="card-number">#${index + 1}</span>
+                        </div>
+                        <h3 class="card-title">${item.title}</h3>
+                        <p style="color:#94a3b8; font-size:0.9rem; margin-bottom:15px;">
+                            ${item.desc.substring(0, 60)}...
+                        </p>
+                        
+                        <div class="btn-group">
+                            <button class="btn btn-enroll" onclick="event.stopPropagation(); window.open('https://example.com/start-lesson/${index+1}', '_blank')">Start Lesson</button>
+                            <button class="btn btn-more">View Details</button>
+                        </div>
+                    </div>
+                    
+                    <div class="floating-img">
+                        <img src="${item.img}" alt="${item.title}" loading="lazy">
+                    </div>
+                </div>
+            `;
+            container.insertAdjacentHTML('beforeend', html);
+        });
+
+        // মডাল লজিক
+        const modal = document.getElementById('detailsModal');
+
+        function openModal(index) {
+            const data = tenseData[index];
+            document.getElementById('mTitle').innerText = data.title;
+            document.getElementById('mDesc').innerText = data.desc;
+            document.getElementById('mStructure').innerText = data.structure;
+            document.getElementById('mExample').innerText = data.example;
+            document.getElementById('mImg').src = data.img;
+            
+            // ডেমো লিংক সেটআপ
+            document.getElementById('mEnrollLink').href = `https://example.com/enroll/lesson-${index+1}`;
+            document.getElementById('mMoreLink').href = `https://example.com/details/lesson-${index+1}`;
+
+            // লেভেল দেখানো
+            const lvlBadge = document.getElementById('mLevel');
+            lvlBadge.innerText = data.level;
+            lvlBadge.className = 'level-badge ' + (data.level.includes('Basic') ? 'lvl-basic' : data.level.includes('Inter') ? 'lvl-inter' : 'lvl-adv');
+
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        window.onclick = function(e) {
+            if(e.target == modal) closeModal();
+        }
+    </script>
+</body>
+</html>
