@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Enrollment | Monjurul Haque</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;500;600;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-bg: #1a0b2e; 
+            --accent-gold: #ffd700; 
+            --accent-blue: #00d4ff; 
+            --text-white: #f1f5f9;
+            --card-glass: rgba(255, 255, 255, 0.05);
+            --success-green: #10b981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+
+        body {
+            background-color: var(--primary-bg);
+            color: var(--text-white);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(100, 50, 240, 0.2) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 212, 255, 0.15) 0%, transparent 20%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* মেইন কন্টেইনার */
+        .enroll-container {
+            background: var(--card-glass);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 0 40px rgba(0,0,0,0.5);
+            position: relative;
+            text-align: center;
+        }
+
+        /* ডেকোরেটিভ বর্ডার টপ */
+        .enroll-container::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 50%;
+            transform: translateX(-50%);
+            width: 50%; height: 4px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 0 15px var(--accent-gold);
+        }
+
+        h2 {
+            font-family: 'Merriweather', serif;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+
+        p.subtitle {
+            color: #cbd5e1;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+
+        /* ফর্ম স্টাইল */
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--accent-blue);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+        }
+
+        textarea {
+            resize: none;
+            height: 100px;
+        }
+
+        /* বাটন */
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(45deg, #ffd700, #ffaa00);
+            border: none;
+            border-radius: 8px;
+            color: #1a0b2e;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 170, 0, 0.4);
+        }
+
+        /* সাকসেস মেসেজ (লুকানো থাকবে) */
+        #status-message {
+            display: none;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid var(--success-green);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        #status-message h3 {
+            color: var(--success-green);
+            margin-bottom: 10px;
+        }
+
+        /* কন্টাক্ট ইনফো */
+        .contact-info {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        .whatsapp-link {
+            color: #25D366;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 5px;
+        }
+
+        /* ব্যাক বাটন */
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-size: 0.9rem;
+            border: 1px solid var(--accent-blue);
+            padding: 8px 20px;
+            border-radius: 50px;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="enroll-container">
+        <div id="form-section">
+            <h2>Enroll Now</h2>
+            <p class="subtitle">কোর্সটি শুরু করতে নিচের ফর্মটি পূরণ করুন</p>
+            
+            <form id="my-form" action="https://formspree.io/f/mkgklkga" method="POST">
+                
+                <div class="form-group">
+                    <label>আপনার নাম (Name)</label>
+                    <input type="text" name="name" placeholder="পূর্ণ নাম লিখুন" required>
+                </div>
+
+                <div class="form-group">
+                    <label>ইমেইল (Email)</label>
+                    <input type="email" name="email" placeholder="example@gmail.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label>ফোন / হোয়াটসঅ্যাপ নম্বর</label>
+                    <input type="tel" name="phone" placeholder="017xxxxxxxx" required>
+                </div>
+
+                <div class="form-group">
+                    <label>কোন কোর্সটি করতে চান?</label>
+                    <input type="text" name="course_name" placeholder="যেমন: English Grammar / Web Design" required>
+                </div>
+
+                <button id="my-form-button" class="submit-btn">সাবমিট করুন</button>
+            </form>
+        </div>
+
+        <div id="status-message">
+            <h3><i class="fas fa-check-circle"></i> সফল হয়েছে!</h3>
+            <p style="color:white; margin: 10px 0;">আপনার তথ্য আমাদের কাছে পৌঁছেছে।</p>
+            <p style="color:#cbd5e1; font-size:0.9rem;">
+                অনুগ্রহ করে অপেক্ষা করুন। খুব শীঘ্রই আপনার ইমেইল অথবা হোয়াটসঅ্যাপে কোর্সের 
+                <strong style="color:var(--accent-gold)">User ID এবং Password</strong> পাঠিয়ে দেওয়া হবে।
+            </p>
+        </div>
+
+        <div class="contact-info">
+            <p>বিশেষ প্রয়োজনে যোগাযোগ করুন:</p>
+            <a href="https://wa.me/8801715247588" class="whatsapp-link">
+                <i class="fab fa-whatsapp"></i> ০১৭১৫২৪৭৫৮৮
+            </a>
+            <br><br>
+            <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> মূল পেইজে ফিরে যান</a>
+        </div>
+    </div>
+
+    <script>
+        var form = document.getElementById("my-form");
+        
+        async function handleSubmit(event) {
+            event.preventDefault();
+            var status = document.getElementById("status-message");
+            var formSection = document.getElementById("form-section");
+            var btn = document.getElementById("my-form-button");
+            var data = new FormData(event.target);
+
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> পাঠানো হচ্ছে...';
+
+            fetch(event.target.action, {
+                method: form.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    // সফল হলে ফর্ম লুকিয়ে মেসেজ দেখাবে
+                    formSection.style.display = "none";
+                    status.style.display = "block";
+                    form.reset();
+                } else {
+                    response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            alert(data["errors"].map(error => error["message"]).join(", "));
+                        } else {
+                            alert("দুঃখিত! কোনো সমস্যা হয়েছে। আবার চেষ্টা করুন।");
+                        }
+                    })
+                }
+            }).catch(error => {
+                btn.innerHTML = 'সাবমিট করুন';
+                alert("দুঃখিত! নেটওয়ার্ক সমস্যা হয়েছে।");
+            });
+        }
+        form.addEventListener("submit", handleSubmit);
+    </script>
+
+</body>
+</html>
