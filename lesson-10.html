@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>লেসন ১০: চলমান পরিবর্তন (Changing Situations)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;600;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-bg: #1a0b2e; 
+            --accent-gold: #ffd700; 
+            --accent-green: #00b894;
+            --accent-red: #ff7675;
+            --text-white: #f1f5f9;
+            --text-gray: #cbd5e1;
+            --card-glass: rgba(255, 255, 255, 0.05);
+            --border-light: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+
+        body {
+            background-color: var(--primary-bg);
+            color: var(--text-white);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(100, 50, 240, 0.2) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 212, 255, 0.15) 0%, transparent 20%);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.8;
+        }
+
+        /* হোম বাটন */
+        .home-btn {
+            position: fixed;
+            top: 20px; left: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: var(--accent-gold);
+            font-weight: bold;
+            border: 1px solid var(--accent-gold);
+            transition: 0.3s;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .home-btn:hover { background: var(--accent-gold); color: #1a0b2e; }
+
+        /* কন্টেন্ট কন্টেইনার */
+        .content-container {
+            max-width: 900px;
+            margin: 60px auto 40px auto;
+            background: var(--card-glass);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 2.2rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border-light);
+            padding-bottom: 15px;
+        }
+
+        h2 {
+            color: var(--accent-green);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        p { margin-bottom: 15px; font-size: 1.1rem; color: var(--text-gray); text-align: justify; }
+
+        /* ট্রেন্ড বাটন/ব্যাজ */
+        .trend-verbs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+            justify-content: center;
+        }
+        .verb-badge {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border-light);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-family: monospace;
+            color: var(--accent-gold);
+        }
+
+        /* গ্রাফিক্যাল কার্ড */
+        .change-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+            border-left: 5px solid var(--accent-green);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 0 10px 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: 0.3s;
+        }
+        .change-card:hover { transform: translateX(5px); background: rgba(255,255,255,0.08); }
+        
+        .change-icon {
+            font-size: 2rem;
+            width: 50px;
+            text-align: center;
+        }
+        .up-icon { color: var(--accent-green); }
+        .down-icon { color: var(--accent-red); }
+
+        .change-text strong { display: block; font-size: 1.1rem; color: #fff; margin-bottom: 5px; }
+        .change-text small { color: #aaa; }
+
+        /* Get এর বিশেষ নিয়ম */
+        .special-rule {
+            background: rgba(0, 184, 148, 0.1);
+            border: 1px dashed var(--accent-green);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+        .special-rule h3 { margin-top: 0; color: var(--accent-green); font-size: 1.2rem; }
+
+        /* নেভিগেশন */
+        .bottom-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-light);
+        }
+        .nav-link { text-decoration: none; color: var(--text-white); font-weight: bold; transition: 0.3s; }
+        .nav-link:hover { color: var(--accent-gold); }
+
+        /* রেসপন্সিভ */
+        @media (max-width: 600px) {
+            .content-container { padding: 20px; }
+            h1 { font-size: 1.6rem; }
+            .change-card { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .change-icon { width: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="home-btn">
+        <i class="fas fa-home"></i> Home
+    </a>
+
+    <div class="content-container">
+        <h1>১০. চলমান পরিবর্তন (Changing Situations)</h1>
+        <p class="subtitle" style="color: var(--accent-green); font-weight: bold;">যে বিষয়গুলো ধীরে ধীরে বদলাচ্ছে</p>
+
+        
+
+[Image of increasing graph]
+
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800" alt="Growth Graph" style="width:100%; border-radius:10px; margin: 20px 0; height: 200px; object-fit: cover; opacity: 0.8;">
+
+        <p>
+            আমরা জানি বর্তমানে কোনো কাজ চলছে বোঝালে Present Continuous হয়। কিন্তু এমন কিছু কাজ আছে যা হয়তো ঠিক এই মুহূর্তে হচ্ছে না, কিন্তু <strong>ধীরে ধীরে পরিবর্তন হচ্ছে</strong> বা কোনো প্রক্রিয়ার মধ্য দিয়ে যাচ্ছে—সেক্ষেত্রেও আমরা এই টেন্স ব্যবহার করি।
+        </p>
+
+        <p style="text-align:center; color: var(--text-gray);">মূলত নিচের ভার্বগুলো বেশি ব্যবহৃত হয়:</p>
+        <div class="trend-verbs">
+            <span class="verb-badge">Get</span>
+            <span class="verb-badge">Change</span>
+            <span class="verb-badge">Become</span>
+            <span class="verb-badge">Increase</span>
+            <span class="verb-badge">Rise</span>
+            <span class="verb-badge">Fall</span>
+            <span class="verb-badge">Grow</span>
+            <span class="verb-badge">Improve</span>
+        </div>
+
+        <h2>বাস্তব উদাহরণ (Real Life Examples)</h2>
+        
+        <div class="change-card">
+            <div class="change-icon up-icon"><i class="fas fa-chart-line"></i></div>
+            <div class="change-text">
+                <strong>The population is increasing very fast.</strong>
+                <small>জনসংখ্যা খুব দ্রুত বাড়ছে। (হঠাৎ করে নয়, ধীরে ধীরে বাড়ছে)</small>
+            </div>
+        </div>
+
+        <div class="change-card" style="border-color: var(--accent-gold);">
+            <div class="change-icon" style="color: var(--accent-gold);"><i class="fas fa-graduation-cap"></i></div>
+            <div class="change-text">
+                <strong>Your English is improving day by day.</strong>
+                <small>তোমার ইংরেজি দিন দিন ভালো হচ্ছে। (উন্নতি চলমান)</small>
+            </div>
+        </div>
+
+        <div class="change-card" style="border-color: var(--accent-red);">
+            <div class="change-icon down-icon"><i class="fas fa-thermometer-empty"></i></div>
+            <div class="change-text">
+                <strong>The temperature is falling.</strong>
+                <small>তাপমাত্রা কমে যাচ্ছে। (শীত আসছে)</small>
+            </div>
+        </div>
+
+        <div class="special-rule">
+            <h3><i class="fas fa-bolt"></i> 'Get' এর বিশেষ ব্যবহার</h3>
+            <p>
+                কথ্য ইংরেজিতে (Spoken English) কোনো অবস্থার পরিবর্তন বোঝাতে <strong>'Get'</strong> শব্দটি সবচেয়ে বেশি ব্যবহৃত হয়।
+            </p>
+            <ul style="margin-left: 20px; color: #d1fae5;">
+                <li>It is <strong>getting</strong> dark. (অন্ধকার হয়ে আসছে/যাচ্ছে)</li>
+                <li>He is <strong>getting</strong> tired. (সে ক্লান্ত হয়ে পড়ছে)</li>
+                <li>The food is <strong>getting</strong> cold. (খাবার ঠান্ডা হয়ে যাচ্ছে)</li>
+            </ul>
+        </div>
+
+        <div class="bottom-nav">
+            <a href="lesson-9.html" class="nav-link"><i class="fas fa-arrow-left"></i> আগের লেসন (Present Continuous)</a>
+            <a href="#" class="nav-link" style="color: var(--accent-green);">পরবর্তী লেসন (Stative Verbs) <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+
+</body>
+</html>
