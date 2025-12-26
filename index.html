@@ -397,10 +397,10 @@
         const container = document.getElementById('tenseContainer');
 
         // কার্ড জেনারেশন লুপ
+        // কার্ড জেনারেশন লুপ
         tenseData.forEach((item, index) => {
-            const isReverse = index % 2 !== 0 ? 'reverse' : ''; // জিগ-জ্যাগ লজিক
+            const isReverse = index % 2 !== 0 ? 'reverse' : ''; 
             
-            // লেভেল অনুযায়ী কালার ক্লাস
             let lvlClass = 'lvl-basic';
             if(item.level.includes('Inter')) lvlClass = 'lvl-inter';
             if(item.level.includes('Adv') || item.level.includes('Uni')) lvlClass = 'lvl-adv';
@@ -418,7 +418,7 @@
                         </p>
                         
                         <div class="btn-group">
-                            <button class="btn btn-enroll" onclick="event.stopPropagation(); window.open('https://example.com/start-lesson/${index+1}', '_blank')">Start Lesson</button>
+                            <button class="btn btn-enroll" onclick="event.stopPropagation(); window.location.href='contact.html'">Start Lesson</button>
                             <button class="btn btn-more">View Details</button>
                         </div>
                     </div>
@@ -442,9 +442,11 @@
             document.getElementById('mExample').innerText = data.example;
             document.getElementById('mImg').src = data.img;
             
-            // ডেমো লিংক সেটআপ
-            document.getElementById('mEnrollLink').href = `https://example.com/enroll/lesson-${index+1}`;
-            document.getElementById('mMoreLink').href = `https://example.com/details/lesson-${index+1}`;
+            // পরিবর্তন ২: মডালের বাটন
+            document.getElementById('mEnrollLink').href = 'contact.html';
+            document.getElementById('mEnrollLink').removeAttribute('target'); // একই ট্যাবে ওপেন হওয়ার জন্য
+
+            document.getElementById('mMoreLink').href = '#'; // বা বিস্তারিত অন্য পেজ থাকলে লিংক দিবেন
 
             // লেভেল দেখানো
             const lvlBadge = document.getElementById('mLevel');
