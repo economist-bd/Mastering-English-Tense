@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>লেসন ৭: নিকট ভবিষ্যৎ (Near Future)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;600;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-bg: #1a0b2e; 
+            --accent-gold: #ffd700; 
+            --accent-blue: #00d4ff; 
+            --text-white: #f1f5f9;
+            --text-gray: #cbd5e1;
+            --card-glass: rgba(255, 255, 255, 0.05);
+            --border-light: rgba(255, 255, 255, 0.1);
+            --time-color: #ff9f43;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+
+        body {
+            background-color: var(--primary-bg);
+            color: var(--text-white);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(100, 50, 240, 0.2) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 212, 255, 0.15) 0%, transparent 20%);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.8;
+        }
+
+        /* হোম বাটন */
+        .home-btn {
+            position: fixed;
+            top: 20px; left: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: var(--accent-gold);
+            font-weight: bold;
+            border: 1px solid var(--accent-gold);
+            transition: 0.3s;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .home-btn:hover { background: var(--accent-gold); color: #1a0b2e; }
+
+        /* কন্টেন্ট কন্টেইনার */
+        .content-container {
+            max-width: 900px;
+            margin: 60px auto 40px auto;
+            background: var(--card-glass);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 2.2rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border-light);
+            padding-bottom: 15px;
+        }
+
+        h2 {
+            color: var(--accent-blue);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        p { margin-bottom: 15px; font-size: 1.1rem; color: var(--text-gray); text-align: justify; }
+
+        /* কনসেপ্ট ভিজ্যুয়ালাইজেশন (টাইমলাইন) */
+        .timeline-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0,0,0,0.3);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+            position: relative;
+        }
+        .timeline-line {
+            position: absolute;
+            top: 50%; left: 10%; right: 10%;
+            height: 2px;
+            background: var(--text-gray);
+            z-index: 0;
+        }
+        .time-point {
+            z-index: 1;
+            text-align: center;
+            background: var(--primary-bg);
+            padding: 5px;
+            border: 1px solid var(--accent-gold);
+            border-radius: 5px;
+            width: 100px;
+        }
+        .time-label { font-size: 0.8rem; color: var(--accent-gold); display: block; }
+        .time-value { font-weight: bold; color: #fff; }
+
+        /* উদাহরণ বক্স */
+        .scenario-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+            border-left: 5px solid var(--time-color);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .scenario-title {
+            color: var(--time-color);
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* পার্থক্য টেবিল */
+        .diff-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .diff-table th, .diff-table td {
+            padding: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            text-align: left;
+        }
+        .diff-table th { background: rgba(0, 212, 255, 0.1); color: var(--accent-blue); }
+
+        /* নেভিগেশন */
+        .bottom-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-light);
+        }
+        .nav-link { text-decoration: none; color: var(--text-white); font-weight: bold; transition: 0.3s; }
+        .nav-link:hover { color: var(--accent-gold); }
+
+        /* রেসপন্সিভ */
+        @media (max-width: 600px) {
+            .content-container { padding: 20px; }
+            h1 { font-size: 1.6rem; }
+            .timeline-box { flex-direction: column; gap: 20px; }
+            .timeline-line { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="home-btn">
+        <i class="fas fa-home"></i> Home
+    </a>
+
+    <div class="content-container">
+        <h1>৭. নিকট ভবিষ্যৎ (Near Future)</h1>
+        <p class="subtitle" style="color: var(--accent-blue); font-weight: bold;">ভবিষ্যতের কথা, কিন্তু বর্তমানের টেন্স!</p>
+
+        <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=800" alt="Schedule Board" style="width:100%; border-radius:10px; margin: 20px 0; height: 200px; object-fit: cover; opacity: 0.8;">
+
+        <p>
+            সাধারণত আমরা জানি ভবিষ্যতের কথা বলতে <strong>Future Indefinite (Will/Shall)</strong> ব্যবহৃত হয়। কিন্তু যদি ভবিষ্যতের কোনো কাজ আগে থেকেই <strong>Fixed Schedule (নির্ধারিত সময়সূচি)</strong> বা <strong>Official Plan</strong> অনুযায়ী ঠিক করা থাকে, তবে সেখানে <strong>Present Indefinite Tense</strong> ব্যবহার করাটাই বেশি শুদ্ধ।
+        </p>
+
+        <div class="timeline-box">
+            <div class="timeline-line"></div>
+            
+            <div class="time-point">
+                <span class="time-label">Now (এখন)</span>
+                <span class="time-value">10:00 AM</span>
+            </div>
+            
+            <div class="time-point" style="border-color: var(--accent-blue);">
+                <span class="time-label">Action</span>
+                <span class="time-value">Plan Fixed</span>
+            </div>
+
+            <div class="time-point" style="border-color: var(--time-color);">
+                <span class="time-label">Future (ভবিষ্যৎ)</span>
+                <span class="time-value">5:00 PM</span>
+            </div>
+        </div>
+
+        <h2>কখন ব্যবহার করবেন? (Fixed Timetables)</h2>
+        <p>ট্রেন, বিমান, বাস, স্কুল, সিনেমা বা মিটিংয়ের সময়সূচি যখন বলা হয়, তখন আমরা এই নিয়ম ব্যবহার করি।</p>
+
+        <div class="scenario-card">
+            <div class="scenario-title"><i class="fas fa-train"></i> ট্রেন বা বাসের সময়</div>
+            <p>
+                <strong>Correct:</strong> The train <span style="color:var(--time-color); font-weight:bold;">leaves</span> at 5 PM. (ট্রেনটি ৫টায় ছাড়বে) <br>
+                <small style="color:#aaa;">(যদিও ৫টা বাজতে দেরি আছে, কিন্তু ট্রেনের টাইমটেবিল ফিক্সড)</small>
+            </p>
+        </div>
+
+        <div class="scenario-card" style="border-color: var(--accent-blue);">
+            <div class="scenario-title" style="color: var(--accent-blue);"><i class="fas fa-school"></i> স্কুল বা অফিস</div>
+            <p>
+                <strong>Correct:</strong> Our school <span style="color:var(--accent-blue); font-weight:bold;">opens</span> next Sunday. (আমাদের স্কুল আগামী রবিবার খুলবে) <br>
+                <small style="color:#aaa;">(এটি কর্তৃপক্ষের সিদ্ধান্ত, তাই Present Indefinite)</small>
+            </p>
+        </div>
+
+        <h2>Will vs Present Indefinite: পার্থক্য কী?</h2>
+        <table class="diff-table">
+            <thead>
+                <tr>
+                    <th>Present Indefinite (Near Future)</th>
+                    <th>Future Indefinite (Will)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>এটি <strong>Official Schedule</strong> বা পাবলিক ইভেন্ট বোঝাতে ব্যবহৃত হয়।</td>
+                    <td>এটি ব্যক্তিগত সিদ্ধান্ত বা অনিশ্চিত ভবিষ্যৎ বোঝাতে বেশি ব্যবহৃত হয়।</td>
+                </tr>
+                <tr>
+                    <td>Ex: The match <strong>starts</strong> at 8 PM.</td>
+                    <td>Ex: I <strong>will watch</strong> the match.</td>
+                </tr>
+                <tr>
+                    <td>(ফিক্সড টাইম)</td>
+                    <td>(আমার ব্যক্তিগত ইচ্ছা)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="bottom-nav">
+            <a href="lesson-6.html" class="nav-link"><i class="fas fa-arrow-left"></i> আগের লেসন (Universal Truth)</a>
+            <a href="#" class="nav-link" style="color: var(--accent-blue);">পরবর্তী লেসন (3rd Person Rule) <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+
+</body>
+</html>
