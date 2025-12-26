@@ -408,78 +408,86 @@
 
         const container = document.getElementById('tenseContainer');
 
-        // কার্ড জেনারেশন লুপ
-        // কার্ড জেনারেশন লুপ
-        tenseData.forEach((item, index) => // কার্ড জেনারেশন লুপ
-        tenseData.forEach((item, index) => {
-            const isReverse = index % 2 !== 0 ? 'reverse' : ''; 
-            
-            let lvlClass = 'lvl-basic';
-            if(item.level.includes('Inter')) lvlClass = 'lvl-inter';
-            if(item.level.includes('Adv') || item.level.includes('Uni')) lvlClass = 'lvl-adv';
+    // কার্ড জেনারেশন লুপ
+    tenseData.forEach((item, index) => {
+        // জিগ-জ্যাগ লজিক
+        const isReverse = index % 2 !== 0 ? 'reverse' : ''; 
+        
+        // লেভেল অনুযায়ী কালার ক্লাস নির্ধারণ
+        let lvlClass = 'lvl-basic';
+        if(item.level.includes('Inter')) lvlClass = 'lvl-inter';
+        if(item.level.includes('Adv') || item.level.includes('Uni')) lvlClass = 'lvl-adv';
 
-            // লজিক: যদি item.pageLink থাকে, তাহলে লিংকে যাবে। না থাকলে মডাল ওপেন করবে।
-            const detailsAction = item.pageLink ? `window.location.href='${item.pageLink}'` : `openModal(${index})`;
+        // লজিক: যদি item.pageLink থাকে, তাহলে লিংকে যাবে। না থাকলে মডাল ওপেন করবে।
+        const detailsAction = item.pageLink ? `window.location.href='${item.pageLink}'` : `openModal(${index})`;
 
-            const html = `
-                <div class="feature-row ${isReverse}">
-                    <div class="glass-card" onclick="openModal(${index})">
-                        <div class="card-header">
-                            <span class="level-badge ${lvlClass}">${item.level}</span>
-                            <span class="card-number">#${index + 1}</span>
-                        </div>
-                        <h3 class="card-title">${item.title}</h3>
-                        <p style="color:#94a3b8; font-size:0.9rem; margin-bottom:15px;">
-                            ${item.desc.substring(0, 60)}...
-                        </p>
-                        
-                        <div class="btn-group">
-                            <button class="btn btn-enroll" onclick="event.stopPropagation(); window.location.href='contact.html'">Start Lesson</button>
-                            
-                            <button class="btn btn-more" onclick="event.stopPropagation(); ${detailsAction}">আরো বিস্তারিত পড়ুন</button>
-                        </div>
+        const html = `
+            <div class="feature-row ${isReverse}">
+                <div class="glass-card" onclick="${detailsAction}">
+                    <div class="card-header">
+                        <span class="level-badge ${lvlClass}">${item.level}</span>
+                        <span class="card-number">#${index + 1}</span>
                     </div>
+                    <h3 class="card-title">${item.title}</h3>
+                    <p style="color:#94a3b8; font-size:0.9rem; margin-bottom:15px;">
+                        ${item.desc.substring(0, 60)}...
+                    </p>
                     
-                    <div class="floating-img">
-                        <img src="${item.img}" alt="${item.title}" loading="lazy">
+                    <div class="btn-group">
+                        <button class="btn btn-enroll" onclick="event.stopPropagation(); window.location.href='contact.html'">Start Lesson</button>
+                        
+                        <button class="btn btn-more" onclick="event.stopPropagation(); ${detailsAction}">আরো বিস্তারিত পড়ুন</button>
                     </div>
                 </div>
-            `;
-            container.insertAdjacentHTML('beforeend', html);
-        });
+                
+                <div class="floating-img">
+                    <img src="${item.img}" alt="${item.title}" loading="lazy">
+                </div>
+            </div>
+        `;
+        container.insertAdjacentHTML('beforeend', html);
+    });
 
-        // মডাল লজিক
-        const modal = document.getElementById('detailsModal');
+    // মডাল লজিক
+    const modal = document.getElementById('detailsModal');
 
-        function openModal(index) {
-            const data = tenseData[index];
-            document.getElementById('mTitle').innerText = data.title;
-            document.getElementById('mDesc').innerText = data.desc;
-            document.getElementById('mStructure').innerText = data.structure;
-            document.getElementById('mExample').innerText = data.example;
-            document.getElementById('mImg').src = data.img;
-            
-            // পরিবর্তন ২: মডালের বাটন
-            document.getElementById('mEnrollLink').href = 'contact.html';
-            document.getElementById('mEnrollLink').removeAttribute('target'); // একই ট্যাবে ওপেন হওয়ার জন্য
+    function openModal(index) {
+        const data = tenseData[index];
+        document.getElementById('mTitle').innerText = data.title;
+        document.getElementById('mDesc').innerText = data.desc;
+        document.getElementById('mStructure').innerText = data.structure;
+        document.getElementById('mExample').innerText = data.example;
+        document.getElementById('mImg').src = data.img;
+        
+        // মডালের এনরোল বাটন (contact.html)
+        const enrollLink = document.getElementById('mEnrollLink');
+        enrollLink.href = 'contact.html';
+        enrollLink.removeAttribute('target'); 
 
-            document.getElementById('mMoreLink').href = '#'; // বা বিস্তারিত অন্য পেজ থাকলে লিংক দিবেন
-
-            // লেভেল দেখানো
-            const lvlBadge = document.getElementById('mLevel');
-            lvlBadge.innerText = data.level;
-            lvlBadge.className = 'level-badge ' + (data.level.includes('Basic') ? 'lvl-basic' : data.level.includes('Inter') ? 'lvl-inter' : 'lvl-adv');
-
-            modal.style.display = 'flex';
+        // মডালের 'আরো বিস্তারিত' বাটন (যদি পেজ লিংক থাকে তবে সেট হবে)
+        const moreLink = document.getElementById('mMoreLink');
+        if (data.pageLink) {
+            moreLink.href = data.pageLink;
+        } else {
+            moreLink.href = '#'; // লিংক না থাকলে একই পেজে থাকবে
         }
 
-        function closeModal() {
-            modal.style.display = 'none';
-        }
+        // লেভেল দেখানো
+        const lvlBadge = document.getElementById('mLevel');
+        lvlBadge.innerText = data.level;
+        lvlBadge.className = 'level-badge ' + (data.level.includes('Basic') ? 'lvl-basic' : data.level.includes('Inter') ? 'lvl-inter' : 'lvl-adv');
 
-        window.onclick = function(e) {
-            if(e.target == modal) closeModal();
-        }
+        modal.style.display = 'flex';
+    }
+
+    function closeModal() {
+        modal.style.display = 'none';
+    }
+
+    // উইন্ডোতে ক্লিক করলে মডাল বন্ধ হবে
+    window.onclick = function(e) {
+        if(e.target == modal) closeModal();
+    }
     </script>
 </body>
 </html>
